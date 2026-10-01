@@ -1,6 +1,7 @@
 package com.example.Consola;
 
 import java.io.IOException;
+import java.nio.file.NoSuchFileException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -52,6 +53,8 @@ public class Menu {
                 System.out.println("[Dato inválido] " + e.getMessage());
             } catch (NumberFormatException e) {
                 System.out.println("[Error] Se esperaba un número.");
+            } catch (NoSuchFileException e) {
+                System.out.println("[Archivo inexistente] Todavía no se guardó " + e.getMessage() + ". Usá primero la opción 9.");
             } catch (IOException e) {
                 System.out.println("[Error de archivo] " + e.getMessage());
             }

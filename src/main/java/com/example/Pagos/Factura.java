@@ -51,7 +51,8 @@ public class Factura implements Comparable<Factura>, Exportable, Valorizable {
     public void emitir() throws LimiteCreditoExcedidoException {
         double total = calcularTotal();
         cliente.registrarCompra("Factura " + numero, total, pago.getMonto());
-        pago.setEstado(pago.getMonto() >= total ? "Completo" : "Parcial");
+        double pagado = pago.getMonto();
+        pago.setEstado(pagado >= total ? "Completo" : (pagado > 0 ? "Parcial" : "Pendiente"));
     }
 
     public void agregarItem(OfertaComercial item) { items.add(item); }
